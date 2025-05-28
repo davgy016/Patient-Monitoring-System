@@ -12,12 +12,12 @@
 
 int main()
 {
-	/*auto pms = std::make_unique<PatientManagementSystem>();
+	auto pms = std::make_unique<PatientManagementSystem>();
 
 	pms->init();
-	pms->run();*/
+	pms->run();
 
-	auto fileLoader = std::make_unique<PatientFileLoader>();
+	/*auto fileLoader = std::make_unique<PatientFileLoader>();
 	fileLoader->initialiseConnection();
 	std::vector<Patient*> patientIn;
 	fileLoader->loadPatients(patientIn);
@@ -25,7 +25,7 @@ int main()
 	for (Patient* p : patientIn) {
 		std::cout << *p << std::endl;
 	}
-	fileLoader->closeConnection();	
+	fileLoader->closeConnection();	*/
 	
 	return 0;
 }
