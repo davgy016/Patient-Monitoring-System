@@ -7,6 +7,7 @@
 #include "Patient.h"
 #include "PatientDatabaseLoader.h"
 #include "PatientfileLoader.h"
+#include "PatientFileLoaderAdapter.h"
 #include "Vitals.h"
 
 #include "GPNotificationSystemFacade.h"
@@ -16,16 +17,17 @@ using namespace std;
 
 
 PatientManagementSystem::PatientManagementSystem() :
-    _patientDatabaseLoader(std::make_unique<PatientFileLoader>()), //_patientDatabaseLoader(std::make_unique<PatientDatabaseLoader>()),
+    //_patientDatabaseLoader(std::make_unique <PatientDatabaseLoader>()),
+    _patientDatabaseLoader(std::make_unique <PatientFileLoaderAdapter>(new PatientFileLoader())),
     _hospitalAlertSystem(std::make_unique<HospitalAlertSystemFacade>()),
     _gpNotificationSystem(std::make_unique<GPNotificationSystemFacade>())
 {
-    _patientDatabaseLoader->initialiseConnection();    
+    _patientDatabaseLoader->initialiseConnection();
 }
 
 PatientManagementSystem::~PatientManagementSystem()
 {
-    _patientDatabaseLoader->closeConnection();   
+    _patientDatabaseLoader->closeConnection();
 
     // clear patient memory
     for (Patient* p : _patients) {

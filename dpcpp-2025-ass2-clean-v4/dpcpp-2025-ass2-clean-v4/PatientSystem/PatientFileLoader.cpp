@@ -68,20 +68,4 @@ std::vector<Patient*> PatientFileLoader::loadPatientFile(const std::string& file
     return patients;
 }
 
-void PatientFileLoader::initialiseConnection()
-{
-    cout<<"Initialise Connection with File loader"<<endl;
-}
 
-void PatientFileLoader::loadPatients(vector<Patient*>& patientIn)
-{
-    vector<Patient*> loadedPatients = loadPatientFile("patients.txt");
-    for (Patient* p : loadedPatients) {
-        patientIn.push_back(p);
-    }
-}
-
-void PatientFileLoader::closeConnection()
-{
-    cout<<"Close Connection with File loader"<<endl;
-}
