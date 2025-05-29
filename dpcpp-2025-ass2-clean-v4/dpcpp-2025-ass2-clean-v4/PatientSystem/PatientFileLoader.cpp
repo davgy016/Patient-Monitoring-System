@@ -45,7 +45,7 @@ std::vector<Patient*> PatientFileLoader::loadPatientFile(const std::string& file
 
         // Get vitals 
         if (!vitalsStr.empty()) {
-            // Can be more than one vitals, if there are more than one disease
+            // Can be more than one vitals
             istringstream vitalsStream(vitalsStr);
             string vital;
             while (getline(vitalsStream, vital, ';')) {

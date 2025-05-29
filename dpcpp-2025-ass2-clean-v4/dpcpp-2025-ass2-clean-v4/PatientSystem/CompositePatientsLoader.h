@@ -14,6 +14,6 @@ public:
     void closeConnection() override;
 
 protected:
-    std::vector<AbstractPatientDatabaseLoader*> patientLoaders;
+    std::vector<AbstractPatientDatabaseLoader*> _patientLoaders;
 };
 

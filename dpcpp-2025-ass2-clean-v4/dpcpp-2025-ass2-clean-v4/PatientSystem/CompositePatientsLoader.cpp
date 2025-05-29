@@ -2,12 +2,12 @@
 
 void CompositePatientsLoader::addPatientLoader(AbstractPatientDatabaseLoader* loader)
 {
-    patientLoaders.push_back(loader);
+    _patientLoaders.push_back(loader);
 }
 
 void CompositePatientsLoader::loadPatients(std::vector<Patient*>& patientIn)
 {
-    for (auto& l : patientLoaders) {
+    for (auto& l : _patientLoaders) {
         l->loadPatients(patientIn);
     }
 }

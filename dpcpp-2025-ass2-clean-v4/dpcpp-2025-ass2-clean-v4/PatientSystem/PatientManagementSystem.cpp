@@ -8,6 +8,7 @@
 #include "PatientDatabaseLoader.h"
 #include "PatientfileLoader.h"
 #include "PatientFileLoaderAdapter.h"
+#include "CompositePatientsLoader.h"
 #include "Vitals.h"
 
 #include "GPNotificationSystemFacade.h"
@@ -18,10 +19,21 @@ using namespace std;
 
 PatientManagementSystem::PatientManagementSystem() :
     //_patientDatabaseLoader(std::make_unique <PatientDatabaseLoader>()),
-    _patientDatabaseLoader(std::make_unique <PatientFileLoaderAdapter>(new PatientFileLoader())),
+    //_patientDatabaseLoader(std::make_unique <PatientFileLoaderAdapter>(new PatientFileLoader())),
     _hospitalAlertSystem(std::make_unique<HospitalAlertSystemFacade>()),
     _gpNotificationSystem(std::make_unique<GPNotificationSystemFacade>())
 {
+    // Create composite loader
+    auto compositeLoader = std::make_unique<CompositePatientsLoader>();
+
+    // Add database loader
+    compositeLoader->addPatientLoader(new PatientDatabaseLoader());
+    // Add file loader via adapter
+    compositeLoader->addPatientLoader(new PatientFileLoaderAdapter(new PatientFileLoader()));
+
+    // Pass pointer to AbstractPatientDatabaseLoader
+    _patientDatabaseLoader = std::move(compositeLoader);
+
     _patientDatabaseLoader->initialiseConnection();
 }
 
@@ -37,7 +49,8 @@ PatientManagementSystem::~PatientManagementSystem()
 
 void PatientManagementSystem::init()
 {
-    _patientDatabaseLoader->loadPatients(_patients);   
+    // Load patients from both database and file
+    _patientDatabaseLoader->loadPatients(_patients);
     for (Patient* p : _patients) {
         _patientLookup[p->uid()] = p;
     }
