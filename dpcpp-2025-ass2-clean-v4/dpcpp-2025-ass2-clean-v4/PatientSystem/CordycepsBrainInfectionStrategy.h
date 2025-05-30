@@ -8,5 +8,6 @@ public:
     CordycepsBrainInfectionStrategy();
     
     AlertLevel getAlertLevel(const Vitals& v) override;    
+    ~CordycepsBrainInfectionStrategy() override = default;
 };
 

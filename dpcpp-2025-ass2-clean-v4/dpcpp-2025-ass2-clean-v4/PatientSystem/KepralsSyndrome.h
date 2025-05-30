@@ -10,6 +10,7 @@ public:
 
     // Inherited via IAlertStrategy
     AlertLevel getAlertLevel(const Vitals& v) override;
+    ~KepralsSyndrome() override = default;
 
 protected:
     int _age;

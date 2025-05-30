@@ -6,6 +6,7 @@
 class IAlertStrategy
 {
 public:
+    virtual ~IAlertStrategy() = default;
     virtual AlertLevel getAlertLevel(const Vitals& v) = 0;
 };
 
