@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -141,11 +141,8 @@
   <ItemGroup>
     <ClCompile Include="AndromedaStrainStrategy.cpp" />
     <ClCompile Include="CompositePatientsLoader.cpp" />
-    <ClCompile Include="CordycepsBrainInfectionStrategy.cpp" />
     <ClCompile Include="GPNotificationSystemFacade.cpp" />
     <ClCompile Include="HospitalAlertSystemFacade.cpp" />
-    <ClCompile Include="IAlertStrategy.cpp" />
-    <ClCompile Include="KepralsSyndrome.cpp" />
     <ClCompile Include="Patient.cpp" />
     <ClCompile Include="PatientDatabaseLoader.cpp" />
     <ClCompile Include="PatientFileLoader.cpp" />
@@ -159,11 +156,8 @@
     <ClInclude Include="AbstractPatientDatabaseLoader.h" />
     <ClInclude Include="AndromedaStrainStrategy.h" />
     <ClInclude Include="CompositePatientsLoader.h" />
-    <ClInclude Include="CordycepsBrainInfectionStrategy.h" />
     <ClInclude Include="GPNotificationSystemFacade.h" />
     <ClInclude Include="HospitalAlertSystemFacade.h" />
-    <ClInclude Include="IAlertStrategy.h" />
-    <ClInclude Include="KepralsSyndrome.h" />
     <ClInclude Include="PatientAlertLevels.h" />
     <ClInclude Include="Patient.h" />
     <ClInclude Include="PatientDatabaseLoader.h" />

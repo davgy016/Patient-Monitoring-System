@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "PatientAlertLevels.h"
+#include "IAlertStrategy.h"
 
 
 // forward declare classes
@@ -47,10 +48,13 @@ public:
 	void setAlertLevel(AlertLevel level);
 	const AlertLevel alertLevel() const { return _alertLevel; }
 
+	void setAlertStrategy(std::unique_ptr<IAlertStrategy> alertStrategy);
+
 protected:
 	std::vector<std::string> _diagnosis;
 	std::vector<const Vitals*> _vitals;
 	AlertLevel _alertLevel;
+	std::unique_ptr<IAlertStrategy> _alertStrategy;
 
 	friend std::ostream& operator<<(std::ostream& os, const Patient& p);
 };
