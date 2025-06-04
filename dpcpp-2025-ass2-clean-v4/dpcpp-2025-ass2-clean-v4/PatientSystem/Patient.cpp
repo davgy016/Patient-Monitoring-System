@@ -76,6 +76,16 @@ void Patient::setAlertStrategy(std::unique_ptr<IAlertStrategy> alertStrategy)
     _alertStrategy = std::move(alertStrategy);
 }
 
+void Patient::addListener(Listener* listener)
+{
+    _listeners.push_back(listener);
+}
+
+void Patient::removeListener(Listener* listener)
+{
+    _listeners.remove(listener);
+}
+
 void Patient::addVitals(const Vitals* v)
 {
     _vitals.push_back(v);
@@ -124,5 +134,11 @@ void Patient::setAlertLevel(AlertLevel level)
             break;
         }
         cout << endl;
+    }
+
+    if (level == AlertLevel::Red) {
+        for (auto l : _listeners) {
+            l->alertLevelHasChanged(this);
+        }
     }
 }

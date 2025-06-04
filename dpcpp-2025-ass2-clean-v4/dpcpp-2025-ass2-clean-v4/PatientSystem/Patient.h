@@ -3,9 +3,11 @@
 
 #include <memory>
 #include <vector>
+#include <list>
 
 #include "PatientAlertLevels.h"
 #include "IAlertStrategy.h"
+#include "Listener.h"
 
 
 // forward declare classes
@@ -50,11 +52,16 @@ public:
 
 	void setAlertStrategy(std::unique_ptr<IAlertStrategy> alertStrategy);
 
+	
+	void addListener(Listener* listener);
+	void removeListener(Listener* listener);
+
 protected:
 	std::vector<std::string> _diagnosis;
 	std::vector<const Vitals*> _vitals;
 	AlertLevel _alertLevel;
 	std::unique_ptr<IAlertStrategy> _alertStrategy;
+	std::list<Listener*> _listeners;
 
 	friend std::ostream& operator<<(std::ostream& os, const Patient& p);
 };
