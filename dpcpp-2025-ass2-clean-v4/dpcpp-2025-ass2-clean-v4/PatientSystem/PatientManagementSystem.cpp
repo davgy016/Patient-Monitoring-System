@@ -57,6 +57,7 @@ void PatientManagementSystem::init()
 
     for (Patient* p : _patients) {
         // TODO: do any processing you need here
+        p->addListener(this);
     }
 }
 
@@ -144,4 +145,10 @@ void PatientManagementSystem::printPatients() const
     for (Patient* p : _patients) {
         std::cout << *p << std::endl;
     }
+}
+
+void PatientManagementSystem::alertLevelHasChanged(Patient* patient)
+{
+    _hospitalAlertSystem->sendAlertForPatient(patient);
+    _gpNotificationSystem->sendGPNotificationForPatient(patient);
 }

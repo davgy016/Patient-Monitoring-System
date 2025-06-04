@@ -4,6 +4,7 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include "Listener.h"
 
 
 // forward declare several classes
@@ -13,7 +14,7 @@ class GPNotificationSystemFacade;
 class Patient;
 
 
-class PatientManagementSystem
+class PatientManagementSystem : public Listener
 {
 public:
 
@@ -30,6 +31,8 @@ public:
 	void printWelcomeMessage() const;
 	void printMainMenu() const;
 	void printPatients() const;
+
+	void alertLevelHasChanged(Patient* patient) override;
 
 protected:
 	std::vector<Patient*> _patients;
