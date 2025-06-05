@@ -57,7 +57,8 @@ void PatientManagementSystem::init()
 
     for (Patient* p : _patients) {
         // TODO: do any processing you need here
-        p->addListener(this);
+        p->addListener(_hospitalAlertSystem.get());
+        p->addListener(_gpNotificationSystem.get());
     }
 }
 
@@ -147,8 +148,3 @@ void PatientManagementSystem::printPatients() const
     }
 }
 
-void PatientManagementSystem::alertLevelHasChanged(Patient* patient)
-{
-    _hospitalAlertSystem->sendAlertForPatient(patient);
-    _gpNotificationSystem->sendGPNotificationForPatient(patient);
-}

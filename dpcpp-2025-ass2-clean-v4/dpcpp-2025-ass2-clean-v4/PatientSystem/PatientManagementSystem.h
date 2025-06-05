@@ -14,7 +14,7 @@ class GPNotificationSystemFacade;
 class Patient;
 
 
-class PatientManagementSystem : public Listener
+class PatientManagementSystem
 {
 public:
 
@@ -30,9 +30,7 @@ public:
 
 	void printWelcomeMessage() const;
 	void printMainMenu() const;
-	void printPatients() const;
-
-	void alertLevelHasChanged(Patient* patient) override;
+	void printPatients() const;	
 
 protected:
 	std::vector<Patient*> _patients;
